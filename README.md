@@ -7,6 +7,43 @@
 
 - 英文主版本仓库：[zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
 
+## 安装方式
+
+### Codex
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/zh4men9/academic-deai-zh.git ~/.codex/skills/academic-deai-zh
+```
+
+### Claude Code
+
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/zh4men9/academic-deai-zh.git ~/.claude/skills/academic-deai-zh
+```
+
+### 更新
+
+如果你把 skill 装在 Codex：
+
+```bash
+git -C ~/.codex/skills/academic-deai-zh pull
+```
+
+如果你把 skill 装在 Claude Code：
+
+```bash
+git -C ~/.claude/skills/academic-deai-zh pull
+```
+
+### 验证
+
+可以直接对 agent 说：
+
+- `用 balanced 模式帮我把这个英文 abstract 去 AI 味，但不要改 technical meaning。`
+- `帮我把这段 introduction 改得少一点 LLM 味，但保留 citations 和 evidence。`
+
 ## 定位
 
 这个 skill 适用于以下英文文本：
