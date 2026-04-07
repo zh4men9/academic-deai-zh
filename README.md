@@ -3,6 +3,10 @@
 这是 `academic-deai` 的中文镜像版本，用于帮助中文用户理解和维护这个开源 skill。  
 它的目标不是处理中文学术写作，而是以中文说明的方式，驱动对**英文**学术文本进行安全、克制、可追踪的去 AI 味处理。
 
+## 对应仓库
+
+- 英文主版本仓库：[zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
+
 ## 定位
 
 这个 skill 适用于以下英文文本：
@@ -35,8 +39,18 @@
 academic-deai-zh/
 ├── SKILL.md
 ├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── CHANGELOG.md
 ├── agents/
 │   └── openai.yaml
+├── benchmark-demo/
+│   ├── README.md
+│   ├── cases.md
+│   └── results.md
+├── examples/
+│   ├── README.md
+│   └── prompts.md
 └── references/
     ├── claim-calibration.md
     ├── core-rules.md
@@ -150,8 +164,8 @@ v3 把此前靠人工 QA 收敛出来的经验正式写成能力：
 
 ## 对应英文版
 
-英文主版本位于：
+英文主版本单独维护于：
 
-- `/Users/zh4men9/.codex/skills/academic-deai`
+- [zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
 
 如果后续要继续维护，优先改英文版，再同步中文版。
