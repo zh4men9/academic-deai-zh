@@ -1,55 +1,55 @@
-# Synthetic Benchmark Cases
+# 中文 Synthetic Benchmark Cases
 
-## B01 Abstract compression
+## B01 摘要压缩
 
-- 目标：去掉 generic setup 和空泛价值语言
+- 目标：去掉空泛背景和“重要意义”套话
 - 风险级别：low
-- 期望行为：在保留 detail 的前提下，可以使用 `Full safe rewrite`
+- 期望行为：在保留任务、方法和结论细节的前提下，可使用 `安全重写`
 
-## B02 Introduction de-templating
+## B02 引言去模板化
 
-- 目标：降低 field-level praise 和模板式转折
+- 目标：减少“随着……快速发展”“受到广泛关注”等模板开场
 - 风险级别：low
-- 期望行为：只要 gap statement 和 constraints 保留清楚，就允许更明显的 rewrite
+- 期望行为：只要研究空白和约束条件保留清楚，就允许明显改写
 
-## B03 Related-work compression
+## B03 相关工作压缩
 
-- 目标：减少重复 scaffolding，同时保留 attribution skeleton
+- 目标：减少重复脚手架，同时保留归因骨架和对比关系
 - 风险级别：medium
-- 期望行为：默认 `Micro-edit only`，除非 comparison mapping 完全清楚
+- 期望行为：默认 `仅微调`，除非比较映射完全清楚
 
-## B04 Detail preservation
+## B04 细节保留
 
-- 目标：压缩围绕具体列表的 prose，而不丢掉 named methods
+- 目标：压缩围绕具体列表的 prose，而不丢掉算法名、数据集名或环境名
 - 风险级别：medium
-- 期望行为：保留所有 named algorithms、datasets 或 environments
+- 期望行为：保留所有有意义的具体名词与限定语
 
-## B05 Symbol-safe micro-edit
+## B05 符号安全微调
 
-- 目标：删掉 symbol-bearing text 周围的 reminder-style framing
+- 目标：删掉公式或变量周围的提醒句、套话和冗余引导语
 - 风险级别：high
-- 期望行为：不改 variables、equations 或 technical skeleton
+- 期望行为：不改变量、公式、定义骨架或技术条件
 
-## B06 Surface hygiene
+## B06 表层卫生
 
-- 目标：修 broken spacing 或 full-width numbering
+- 目标：修复中英文混排空格、图表标签空格、全角编号等问题
 - 风险级别：low
-- 期望行为：只做 deterministic cleanup
+- 期望行为：只做确定性的表层清理
 
-## B07 Claim calibration trio
+## B07 论断档位对比
 
-- 目标：比较 `closer to source`、`balanced` 和 `conservative`
+- 目标：比较 `贴近原文`、`平衡`、`保守`
 - 风险级别：medium
-- 期望行为：evidence anchor 相同，但 claim pressure 不同
+- 期望行为：证据锚点相同，但论断压力不同
 
-## B08 Already-natural prose
+## B08 已经自然的文本
 
-- 目标：验证 skill 能正确选择 `No-op`
+- 目标：验证 skill 能正确选择 `不改`
 - 风险级别：low
-- 期望行为：不做不必要 rewrite
+- 期望行为：不做不必要重写
 
-## B09 Mismatch refusal
+## B09 不匹配请求
 
-- 目标：确认博客式或营销式 humanization 会被拒绝或降级
+- 目标：确认博客式、营销式、人设化改写会被拒绝或降级
 - 风险级别：n/a
-- 期望行为：不要强行套用 academic workflow
+- 期望行为：不要强行套用中文论文学术 workflow

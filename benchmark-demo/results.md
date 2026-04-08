@@ -1,58 +1,58 @@
-# Sample Results
+# 示例结果
 
-下面是一些紧凑的 synthetic 演示，不是完整 benchmark 输出。
+下面是一些紧凑的中文 synthetic 演示，不是完整 benchmark 输出。
 
-## B01 Abstract compression
-
-**Before**  
-This study aims to explore an effective framework for addressing the problem and provides valuable insights into how the proposed approach can improve performance in complex scenarios.
-
-**Expected output style**  
-This study evaluates a framework for the task and shows how the proposed approach improves performance under the tested conditions.
-
-**Why**  
-改写去掉了 generic value language，只保留有支撑的内容。
-
-## B03 Related-work compression
+## B01 摘要压缩
 
 **Before**  
-Smith et al. propose a density-based method, while Lee et al. introduce a contrastive alternative. By contrast, Chen et al. focus on reward shaping rather than state novelty.
+本文针对相关问题开展了深入研究，提出了一种有效框架，具有重要理论意义和应用价值，并为复杂场景下的性能提升提供了有益参考。
 
 **Expected output style**  
-Smith et al. propose a density-based method, Lee et al. a contrastive alternative, and Chen et al. a reward-shaping approach rather than a state-novelty method.
+本文针对该问题提出了一种框架，并在给定场景下验证了其性能提升效果。
 
 **Why**  
-改写缩短了 prose，但没有打乱 attribution mapping。
+改写去掉了空泛价值语言，只保留文本能支撑的任务、方法与结果。
 
-## B04 Detail preservation
+## B03 相关工作压缩
 
 **Before**  
-We selected six representative methods for evaluation, including Method A, Method B, Method C, Method D, Method E, and Method F, because each represents a different family of approaches.
+张三等提出了基于密度估计的方法，李四等提出了对比学习方法，而王五等则从奖励塑形角度开展研究。
 
 **Expected output style**  
-We selected six representative methods for evaluation: Method A, Method B, Method C, Method D, Method E, and Method F, each representing a different family of approaches.
+张三等采用基于密度估计的方法，李四等采用对比学习方法，王五等则侧重奖励塑形而非状态新颖性。
 
 **Why**  
-压缩的是列表周围的冗余，而不是把具体列表压掉。
+改写缩短了脚手架，但没有打乱归因关系与对比逻辑。
 
-## B05 Symbol-safe micro-edit
+## B04 细节保留
 
 **Before**  
-It is important to note that the optimal x values may vary depending on the specific characteristics of the environment and the algorithm being used.
+为全面评估方法性能，我们选取了六种具有代表性的算法，包括算法 A、算法 B、算法 C、算法 D、算法 E 和算法 F。
 
 **Expected output style**  
-The optimal x values may vary with the environment and algorithm.
+为评估方法性能，我们选取了六种代表性算法：算法 A、算法 B、算法 C、算法 D、算法 E 和算法 F。
 
 **Why**  
-改写删掉了 reminder-style phrasing，但保留了带变量的结构。
+压缩的是列表周围的冗余，而不是把具体算法列表压没。
 
-## B06 Surface hygiene
+## B05 符号安全微调
 
 **Before**  
-state.Different settings are shown in Fig.7. The two groups are denoted by （1） and （2）.
+需要指出的是，参数 λ 的最优取值会随着具体环境和算法设置的不同而发生变化。
 
 **Expected output style**  
-state. Different settings are shown in Fig. 7. The two groups are denoted by (1) and (2).
+参数 λ 的最优取值会随环境和算法设置而变化。
 
 **Why**  
-这属于 deterministic cleanup，不是 semantic rewriting。
+改写删掉了提醒式套话，但保留了带符号的技术结构。
+
+## B06 表层卫生
+
+**Before**  
+如图1所示,模型在实验A中取得了更优结果。两组实验分别记为（1）和（2）。
+
+**Expected output style**  
+如图 1 所示，模型在实验 A 中取得了更优结果。两组实验分别记为 (1) 和 (2)。
+
+**Why**  
+这属于确定性的表层清理，不是语义级改写。

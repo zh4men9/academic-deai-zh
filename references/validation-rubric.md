@@ -1,63 +1,63 @@
-# Validation Rubric
+# 验收量表
 
-在任何 rewrite 之后，进入 final audit mode 时使用本 rubric。
+在任何改写之后，进入最终复核时使用这个量表。
 
-## 1. Meaning preserved
+## 1. 技术含义是否保留
 
-- Pass: revised text 保留了原始技术意义和论证意义
-- Borderline: meaning 基本保留，但有一句措辞可能轻微缩窄或放大了 scope
-- Fail: rewrite 改变了文本真正表达的 claim
+- Safe：修改后保留了原始技术意义和论证意义
+- Needs revision：整体含义基本保留，但有一句措辞可能轻微缩窄或放大了范围
+- Unsafe：改写改变了文本真正表达的结论或技术含义
 
-## 2. Claim strength preserved or properly softened
+## 2. 论断力度是否保留或被适当收敛
 
-- Pass: claim 与原有 evidence 匹配，或在所选 claim mode 下被适当收敛
-- Borderline: 有一句听起来比预期略强或略弱
-- Fail: novelty、significance 或 generality 被实质改变
+- Safe：论断与原有证据匹配，或在所选档位下被适当收敛
+- Needs revision：有一句听起来比预期略强或略弱
+- Unsafe：创新性、有效性、意义或外推范围被实质改变
 
-## 3. Citation and evidence relationships preserved
+## 3. 引文与证据关系是否保留
 
-- Pass: attribution 和 evidence anchors 保持完整
-- Borderline: 有一句可能让“哪条证据支撑哪项 claim”略微模糊
-- Fail: rewrite 改变了 attribution、scope 或 evidential linkage
+- Safe：归因与证据锚点保持完整
+- Needs revision：有一句可能让“哪条证据支撑哪项结论”略微模糊
+- Unsafe：改写改变了归因、证据关系或适用范围
 
-## 4. Detail preserved
+## 4. 具体细节是否保留
 
-- Pass: 重要的 named algorithms、datasets、environments、enumerations 和 scoped qualifiers 都保留了
-- Borderline: 有一个具体细节被压缩了，但从上下文仍可恢复
-- Fail: 有意义的 detail 被删除或模糊化
+- Safe：算法名、数据集、环境、枚举项、限定语和比较基础都保留了
+- Needs revision：有一个具体细节被压缩了，但从上下文仍可恢复
+- Unsafe：有意义的细节被删除或模糊化
 
-## 5. Academic tone naturalized without becoming informal
+## 5. 学术语气是否变得更自然而不失正式
 
-- Pass: 文本减少模板感，同时仍 formal 且 scholarly
-- Borderline: 文本更干净了，但仍略机械，或稍微太顺
-- Fail: 文本变得 casual、promotional、chatty 或过度会话化
+- Safe：文本减少模板感，同时仍保持学术正式性
+- Needs revision：文本更干净了，但仍略机械，或稍微太顺
+- Unsafe：文本变得口语化、宣传化、聊天化或过于会话化
 
-## 6. Sentence rhythm improved without introducing generic prose
+## 6. 节奏是否改善且没有引入空泛 prose
 
-- Pass: prose 更自然，也更具体
-- Borderline: rhythm 变好了，但有一处 edit 更 generic
-- Fail: rewrite 为了更顺而牺牲了 specificity 或 discipline fit
+- Safe：表达更自然，也更具体
+- Needs revision：节奏有所改善，但某一处更空泛了
+- Unsafe：为了更顺而牺牲了具体性或学科契合度
 
-## 7. Manual Check coverage
+## 7. 人工复核覆盖是否合格
 
-- Pass: 所有需要人工复核的 changed high-risk 或 citation-sensitive edits 都准确进入 `Manual Check Items`，且 checklist 有用不过噪
-- Borderline: checklist 略吵，或漏了一个低严重度项
-- Fail: checklist 漏掉了实质 changed review item，或被低价值项淹没
+- Safe：所有需要人工复核的已改高风险项都准确进入 `人工复核项`，且不过噪
+- Needs revision：复核清单略吵，或漏了一个低严重度项
+- Unsafe：清单漏掉了实质 changed risk，或被低价值项目淹没
 
-## 8. Transparent reporting coverage
+## 8. 透明报告是否合格
 
-- Pass: `Manual Check Items`、`Skipped High-Risk Items`、`Unchanged Suspicious Items` 三类分得正确
-- Borderline: 有一个 residual item 被放错桶，但仍然可见
-- Fail: residual uncertainty 被隐藏、压平或误报
+- Safe：`人工复核项`、`跳过的高风险项`、`未修改但可疑项` 三类分得正确
+- Needs revision：有一个残余项放错了桶，但仍然可见
+- Unsafe：残余不确定性被隐藏、压平或误报
 
-## 9. Claim mode consistency
+## 9. 论断档位是否一致
 
-- Pass: 所选 claim mode 在类似句子上应用一致
-- Borderline: 有一句轻微偏离所选 mode
-- Fail: 输出混用了互相冲突的 calibration style，且未解释
+- Safe：所选论断档位在类似句子上应用一致
+- Needs revision：有一句轻微偏离所选档位
+- Unsafe：输出混用了互相冲突的校准风格，且没有解释
 
-## Audit Decision
+## 审核结论
 
-- Safe: 九项全部 pass，或仅有轻微 borderline
-- Needs revision: 存在一个或多个重要 borderline
-- Unsafe: 任一项出现 fail
+- Safe：九项全部达标，或仅有轻微 `Needs revision`
+- Needs revision：存在一个或多个重要的 `Needs revision`
+- Unsafe：任一项出现 `Unsafe`

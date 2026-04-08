@@ -1,50 +1,50 @@
-# Core Rules
+# 核心规则
 
-这些规则优先于一切风格偏好。若某个可能的 edit 与以下任一规则冲突，则不要做该 edit。
+这些规则优先于一切风格偏好。若某个可能的改写与以下任一规则冲突，则不要做该改写。
 
-## Hard Constraints
+## 硬约束
 
-- 不要新增 facts、data、citations、methods 或 claims
-- 不要增强 novelty、significance 或 generality claims
-- 不要为了“更自然”而削弱本来合理的技术精度
-- 当技术措辞是必须的时，不要用 generic prose 替换 discipline-specific wording
-- 不要改变 citation relationships、attribution 或 evidential anchoring
-- 除非用户明确要求，否则不要重写 equations、variable definitions、theorem statements 或 exact result claims
-- 默认不要注入 first person、contractions、idioms、humor 或 conversational markers
-- 不要在未被要求时悄悄修 factual 或 bibliographic 问题
-- 如果原文已经足够自然，应建议 minimal edits 或 no edits
-- 当某个 edit 改变了 claim strength、exact quantitative wording、citation-bearing prose、methods wording、causal explanation、generality scope 或 definition-like sentence 时，应输出 `Manual Check Item`
+- 不要新增事实、数据、引文、方法或结论
+- 不要增强创新性、有效性、重要性或泛化性论断
+- 不要为了“更自然”而削弱原本合理的技术精度
+- 当专业措辞是必要的时，不要用空泛表达替代学科内术语
+- 不要改变引文关系、归因对象或证据锚点
+- 除非用户明确要求，否则不要重写公式、变量定义、定理表述或精确结果
+- 默认不要注入第一人称表演式语气、俚语、幽默或会话化表达
+- 不要在未被要求时悄悄修事实错误或参考文献信息
+- 如果原文已经足够自然，应建议少改或不改
+- 当某个改动改变了论断力度、精确结果措辞、引文归因句、方法措辞、因果解释、泛化范围或定义式句子时，应输出 `人工复核项`
 
-## Positive Goal
+## 正向目标
 
-目标不是“更像真人聊天”，而是让 scholarly prose 变得：
+目标不是“更像真人聊天”，而是让中文学术 prose 变得：
 
-- less templated
-- more specific
-- more proportionate
-- more natural in sentence rhythm
-- 同时仍然 formal、objective、evidence-disciplined
+- 更少模板味
+- 更具体
+- 更成比例
+- 更符合中文学术表达节奏
+- 同时仍然正式、客观、证据可追溯
 
-## Safety Preference Order
+## 安全优先顺序
 
-当两个 edit 互相冲突时，优先级如下：
+当两个改写方向冲突时，优先级如下：
 
-1. meaning preservation
-2. citation 和 evidence preservation
-3. claim proportionality
-4. precision
-5. stylistic naturalness
+1. 技术含义保留
+2. 引文与证据保留
+3. 论断成比例
+4. 精确性
+5. 自然度
 
-## Practical Rule of Thumb
+## 实用判断规则
 
-如果一个 edit 让文本更顺，但同时也变得更 generic、更不精确、更强势，或更难追溯到证据，就拒绝这个 edit。
+如果一个改动让句子更顺，却也更空泛、更不精确、更强势，或者更难追溯到证据，就拒绝这个改动。
 
-## Manual Check Principle
+## 人工复核原则
 
-并非每个 rewrite 都需要人工复核。只有在以下情况下才使用 `Manual Check Items`：
+并非每个改写都需要人工复核。只有在以下情况下才使用 `人工复核项`：
 
-- 改动在解释层面确实有风险
+- 改动在解释层面确实存在风险
 - 人工确认能明显降低不确定性
-- 为保护 precision 不得不牺牲 fluency，或反之
+- 为了保护精确性不得不牺牲流畅性，或反之
 
-不要为了 harmless 的低风险清理而制造 checklist 噪声。
+不要为了无害的低风险清理制造 checklist 噪声。

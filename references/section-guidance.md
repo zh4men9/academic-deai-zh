@@ -1,93 +1,93 @@
-# Section Guidance
+# 章节指导
 
-## Title / Keywords
+## 标题 / 关键词
 
-- Intervention level: very low
-- Default edit level: `No-op` 或 `Micro-edit only`
-- Goal: 只去掉明显 generic 或冗余的词
-- Avoid: creative rebranding 或修辞性 embellishment
+- 干预强度：很低
+- 默认编辑级别：`No-op` 或 `Micro-edit only`
+- 目标：只删除明显空泛、重复或过度修辞化的词
+- 避免：重新包装题目、制造更“吸睛”的表述
 
-## Abstract
+## 摘要
 
-- Intervention level: medium
-- Default edit level: `Full safe rewrite`
-- Goal: 提高 density、specificity、restraint 和 sentence economy
-- Remove: generic setup、空 motivation、夸张 contribution wording
-- Keep: exact task、method、evidence、scope 和 concrete detail
-- 默认使用 `balanced` claim mode，除非用户明确另选
+- 干预强度：中等
+- 默认编辑级别：`Full safe rewrite`
+- 目标：提高信息密度、具体性、克制度和句子经济性
+- 删除：空泛背景、空动机、夸张贡献词
+- 保留：具体任务、方法、证据、边界和关键细节
+- 默认使用 `平衡` 论断档位，除非用户明确指定其他档位
 
-## Introduction
+## 引言
 
-- Intervention level: low to medium
-- Default edit level: `Micro-edit only` 或 `Full safe rewrite`
-- Goal: 降低 thesis-template rhetoric 和空泛的 field-level motivation
-- Remove: 不能推进本文实际设定的 broad claims
-- Keep: problem framing、gap statement、contribution logic 和 named constraints
+- 干预强度：低到中等
+- 默认编辑级别：`Micro-edit only` 或 `Full safe rewrite`
+- 目标：降低模板化铺垫和空泛的领域赞美
+- 删除：不能推进本文问题设定的宏大叙事、泛化背景、机械意义宣称
+- 保留：问题定义、研究缺口、贡献逻辑和具体约束
 
-## Related Work
+## 相关工作
 
-- Intervention level: low
-- Default edit level: `Micro-edit only`
-- Goal: 在减少重复 scaffolding 的同时保留 comparison logic 和 citation structure
-- Remove: 仅当比较关系仍清楚时，才压缩重复的 "X proposed" pattern
-- Keep: cited works 之间的 attribution 和 distinction
-- 在压缩语言前，先保住 attribution skeleton
-- 保持每篇 cited method 与其描述之间的一一对应
-- 如果 substantively 重写了 citation-bearing comparison、contrast sentence 或 multi-citation synthesis line，加入 `Manual Check Items`
+- 干预强度：较低
+- 默认编辑级别：`Micro-edit only`
+- 目标：在减少重复脚手架的同时保留比较逻辑与引文结构
+- 删除：在不破坏比较关系的前提下，压缩重复的“某某提出了……”句式
+- 保留：不同工作的归因、区别和对比关系
+- 压缩前先保住归因骨架
+- 保持每篇文献与其方法描述的一一对应
+- 如果实质性重写了引文承载比较句、对比句或多文献综合句，加入 `人工复核项`
 
-## Methods
+## 方法
 
-- Intervention level: very low
-- Default edit level: `Micro-edit only`
-- Goal: 保留 precision
-- Remove: 只删不触及 technical content 的明显公式化措辞
-- Avoid: 可能改变 definitions、procedure、assumptions 或 symbol-bearing clauses 的 paraphrase
-- 不要改动 inline variables、equation-bearing spans 或 definition skeletons
-- 如果 methods、procedure 或 assumptions sentence 的改写超出 micro-edit 范围，加入 `Manual Check Items`
-- 如果安全清理必须重构 technical skeleton，则写入 `Skipped High-Risk Items`
+- 干预强度：很低
+- 默认编辑级别：`Micro-edit only`
+- 目标：优先保护技术精确性
+- 删除：不触及技术内容的提醒句、空泛说明和机械重复
+- 避免：会改变定义、步骤、假设、变量或符号承载结构的改写
+- 不要动 inline 变量、公式承载片段或定义骨架
+- 如果方法句、步骤句或假设句的改动超出 micro-edit，加入 `人工复核项`
+- 如果要改就必须重构技术骨架，则写入 `跳过的高风险项`
 
-## Experiments / Results
+## 实验与结果
 
-- Intervention level: very low
-- Default edit level: `Micro-edit only`
-- Goal: 让 findings 保持 exact 和 proportionate
-- Remove: findings 周围的 formulaic narration
-- Avoid: 让 uncertainty、magnitude、comparison basis、datasets 或 environments 变模糊的 smoothing
-- 保留 named algorithms、datasets、environments 和 comparison bases
-- 对 exact quantitative wording、causal explanations、scope changes，加入 `Manual Check Items`
-- 如果 symbol-bearing technical prose 无法通过 micro-edit 安全改进，则写入 `Skipped High-Risk Items`
+- 干预强度：很低
+- 默认编辑级别：`Micro-edit only`
+- 目标：让结果表达保持精确、克制且与证据成比例
+- 删除：结果叙述周围的模板化旁白、空转折和提醒句
+- 避免：让不确定性、比较基础、数据集、环境或结果幅度变模糊
+- 保留：算法名、数据集名、环境名、比较基线和实验条件
+- 若改动涉及精确结果、因果解释或范围变化，加入 `人工复核项`
+- 如果符号承载段落无法通过 micro-edit 安全改进，则写入 `跳过的高风险项`
 
-## Discussion
+## 讨论
 
-- Intervention level: low
-- Default edit level: `Micro-edit only` 或 `Full safe rewrite`
-- Goal: 收紧 interpretation，让 implications 保持成比例
-- Remove: 夸大的 significance 和 generic impact language
-- Keep: evidence-linked interpretation 和已写出的 limitations
-- 如果 edit 改变了 causal explanation 或 generality scope，加入 `Manual Check Items`
+- 干预强度：较低
+- 默认编辑级别：`Micro-edit only` 或 `Full safe rewrite`
+- 目标：收紧解释，让意义和外推保持成比例
+- 删除：夸张意义、泛化影响和口号式判断
+- 保留：与证据直接相连的解释和已写出的限制
+- 若改动改变了因果说明或适用范围，加入 `人工复核项`
 
-## Conclusion
+## 结论
 
-- Intervention level: medium
-- Default edit level: `Full safe rewrite`
-- Goal: 去掉 recap clichés 和无支撑的 future-impact claims
-- Remove: generic 的 "in summary" 式结尾，以及结果不支持的 broad claims
-- Keep: 论文真实 takeaways 和合理 future work
-- 默认使用 `balanced` claim mode
-- 如果 rewrite 改变了解释层面的 claim strength、cause 或 scope，加入 `Manual Check Items`
+- 干预强度：中等
+- 默认编辑级别：`Full safe rewrite`
+- 目标：去掉套话式总结和无支撑的宏大外推
+- 删除：空泛收束句、“具有重要意义”式拔高、结果不支持的宽泛展望
+- 保留：论文真实结论、明确限制和合理后续工作
+- 默认使用 `平衡` 论断档位
+- 若改写改变了解释层面的论断力度、因果或范围，加入 `人工复核项`
 
-## Cover Letter
+## 投稿附信
 
-- Intervention level: medium
-- Default edit level: `Full safe rewrite`
-- Goal: direct、professional、non-robotic
-- Remove: stiff templates 和 exaggerated self-praise
-- Keep: venue fit、contribution summary 和 procedural politeness
+- 干预强度：中等
+- 默认编辑级别：`Full safe rewrite`
+- 目标：直接、专业、不机器化
+- 删除：僵硬模板、过度恭维和自我拔高
+- 保留：期刊匹配度、贡献概述和必要礼貌
 
-## Rebuttal / Response Letter
+## 回复信
 
-- Intervention level: low to medium
-- Default edit level: `Micro-edit only` 或 `Full safe rewrite`
-- Goal: respectful、evidence-based、steady
-- Remove: canned gratitude、defensive phrasing 或公式化过度平滑
-- Keep: exact reviewer-response mapping 和 concrete changes
+- 干预强度：低到中等
+- 默认编辑级别：`Micro-edit only` 或 `Full safe rewrite`
+- 目标：尊重、具体、证据导向、不过分僵硬
+- 删除：套话式感谢、机械顺从和泛泛回应
+- 保留：审稿意见与修改动作的一一对应，以及必要的具体说明

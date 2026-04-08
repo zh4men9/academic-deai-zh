@@ -1,124 +1,124 @@
-# Rewrite Patterns
+# 改写模式
 
-这些模式是 guide，不是可以盲套的公式。
+这些模式是参考，不是可以机械套用的模板。优先保留原文技术含义、引文关系和论断边界。
 
-## Abstract compression
+## 摘要压缩
 
 **Before**  
-This study aims to explore an effective framework for addressing the problem and provides valuable insights into how the proposed approach can improve performance in complex scenarios.
+本文旨在探索一种有效框架来解决相关问题，并为理解所提方法如何在复杂场景下提升性能提供有价值的启示。
 
 **Better**  
-This study evaluates a framework for the task and shows how the proposed approach improves performance under the tested conditions.
+本文评估了一种用于该任务的框架，并说明所提方法在测试条件下如何提升性能。
 
 **Why**  
-改写去掉了 generic value language，只保留文本能支持的内容。
+改写去掉了“有效”“有价值”等空泛评价，只保留文本能支持的信息。
 
-## Introduction de-templating
+## 引言去模板化
 
 **Before**  
-In recent years, this topic has attracted significant attention due to its broad applicability and considerable importance in many real-world settings.
+近年来，随着相关领域的快速发展，该问题因其广泛应用前景而受到广泛关注。
 
 **Better**  
-This topic has received attention because it affects applications where the stated constraint directly limits performance.
+该问题之所以受到关注，是因为在本文讨论的应用中，这一约束会直接限制性能。
 
 **Why**  
-改写用与论文设定直接相关的具体理由，替代了泛化的 field-level praise。
+改写把泛化的背景赞美换成了与论文设定直接相关的具体理由。
 
-## Conclusion de-inflation
+## 结论降夸张
 
 **Before**  
-In summary, the results of this study highlight the substantial potential of the proposed method and provide important guidance for future research and practical deployment.
+综上所述，本文结果充分体现了所提方法的巨大潜力，并为未来研究和实际部署提供了重要指导。
 
 **Better**  
-Overall, the results support the proposed method under the evaluated setting and suggest a limited set of directions for follow-up work.
+总体来看，实验结果支持所提方法在当前设置下的有效性，并为后续工作提供了有限且具体的方向。
 
 **Why**  
-改写让结论与 evidence 保持比例关系，避免了 grand impact language。
+改写让结论与证据保持比例关系，避免口号式收尾。
 
-## Removing empty transitions
+## 删除空转折
 
 **Before**  
-Moreover, it is worth noting that the model also shows improved robustness in several cases.
+此外，值得注意的是，该模型在若干场景下还表现出了更好的鲁棒性。
 
 **Better**  
-The model also shows improved robustness in several cases.
+该模型在若干场景下还表现出了更好的鲁棒性。
 
 **Why**  
-原本的转折只增加 polished 感，没有增加信息。删掉后节奏更自然、模板感更弱。
+原句中的转折提示不提供新信息，删掉后更自然，也更少模板感。
 
-## Making claims more proportionate
+## 让论断更成比例
 
 **Before**  
-These findings demonstrate that the proposed approach is highly effective and broadly applicable.
+这些结果充分证明了所提方法具有显著优势，并且具有广泛适用性。
 
 **Better**  
-These findings suggest that the proposed approach is effective in the evaluated setting.
+这些结果表明，所提方法在当前评测设置下表现较好。
 
 **Why**  
-改写保留了积极结果，但去掉了无支撑的 scope 扩张。
+改写保留了积极结论，但去掉了无支撑的范围扩张。
 
-## Preserving cautious academic hedging
+## 保留合理保留语
 
 **Before**  
-This may potentially indicate that the method could possibly be useful in other domains.
+这可能在一定程度上说明该方法或许有望适用于其他领域。
 
 **Better**  
-This suggests that the method may be useful in related domains.
+这表明该方法可能对相关场景也有参考价值。
 
 **Why**  
-改写去掉了堆叠 hedges，但保留了合理的谨慎度。
+改写去掉了堆叠式保留语，但保留了必要的谨慎度。
 
-## Detail-preserving compression
+## 细节保留式压缩
 
 **Before**  
-We selected six representative methods for evaluation, including Method A, Method B, Method C, Method D, Method E, and Method F, because each represents a different family of approaches.
+本文选取了六种具有代表性的算法进行比较，包括算法 A、算法 B、算法 C、算法 D、算法 E 和算法 F，因为它们分别代表了不同类别的方法。
 
 **Better**  
-We selected six representative methods for evaluation: Method A, Method B, Method C, Method D, Method E, and Method F, each representing a different family of approaches.
+本文选取了六种具有代表性的算法进行比较：算法 A、算法 B、算法 C、算法 D、算法 E 和算法 F，它们分别代表不同类别的方法。
 
 **Why**  
 改写压缩的是列表周围的冗余，而不是把具体列表本身压没。
 
-## Citation-sensitive compression
+## 引文敏感压缩
 
 **Before**  
-Smith et al. propose a density-based method, while Lee et al. introduce a contrastive alternative. By contrast, Chen et al. focus on reward shaping rather than state novelty.
+张三等提出了一种基于密度的方法，李四等则提出了一种对比学习替代方案。相比之下，王五等更关注奖励塑形，而不是状态新颖性。
 
 **Better**  
-Smith et al. propose a density-based method, Lee et al. a contrastive alternative, and Chen et al. a reward-shaping approach rather than a state-novelty method.
+张三等提出了基于密度的方法，李四等提出了对比学习替代方案，王五等则更关注奖励塑形而非状态新颖性。
 
 **Why**  
-改写减少了 scaffolding，但保留了 attribution skeleton 和 comparison logic。
+改写减少了重复脚手架，但保留了归因骨架与比较关系。
 
-## Symbol-safe micro-edit
+## 符号安全微调
 
 **Before**  
-It is important to note that the optimal x values may vary depending on the specific characteristics of the environment and the algorithm being used.
+需要指出的是，最优的 x 取值可能会随着环境特性和所采用算法的不同而发生变化。
 
 **Better**  
-The optimal x values may vary with the environment and algorithm.
+最优的 x 取值可能随环境特性和算法而变化。
 
 **Why**  
-改写删掉的是 reminder-style framing，而不是带变量的结构本身。
+改写删除的是提醒式外壳，而不是带变量的技术结构本身。
 
-## Cover-letter naturalization
+## 投稿附信自然化
 
 **Before**  
-We sincerely believe that our manuscript will be of great interest to the readership of the journal and would be highly suitable for publication in your esteemed venue.
+我们真诚地认为，本稿件将对贵刊读者具有重要吸引力，并且非常适合发表在贵刊这一享有盛誉的平台上。
 
 **Better**  
-We believe the manuscript fits the journal because it addresses the stated topic and may be relevant to its readership.
+我们认为该稿件与贵刊关注的主题契合，相关读者可能会对此感兴趣。
 
 **Why**  
-改写保留了专业的 venue-fit 语言，但去掉了夸张的尊称和自我推销。
+改写保留了期刊匹配度说明，但去掉了夸张恭维和过度自荐。
 
-## Rebuttal naturalization
+## 回复信自然化
 
 **Before**  
-We greatly appreciate the reviewer's insightful and valuable comments, which have significantly helped us improve the quality and clarity of the manuscript.
+我们非常感谢审稿人提出的富有洞见且极具价值的意见，这些意见显著提升了稿件的质量与清晰度。
 
 **Better**  
-We thank the reviewer for the comment. We clarified this point in the revised manuscript and now state the assumption explicitly.
+感谢审稿人的意见。我们已在修订稿中补充说明，并明确写出相关假设。
 
 **Why**  
-改写把 canned politeness 转成了具体回应内容，同时不显得无礼。
+改写把礼貌模板转成了具体回应内容，同时仍保持专业。

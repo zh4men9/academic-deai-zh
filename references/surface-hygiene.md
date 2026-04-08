@@ -1,28 +1,30 @@
-# Surface Hygiene
+# 表层卫生
 
-这个 reference 用于处理确定性的低风险表面清理，不应把它误当成 claim-level rewrite。
+这个 reference 用于处理确定性的低风险表层清理，不应把它误当成论断级改写。
 
 ## 覆盖的问题
 
-- broken sentence-boundary spacing
-- period 后缺空格
-- `Fig. 7` / `Table 2` 这类标签空格
-- 英文稿中的全角编号，如 `（1）` / `（2）`
+- 中文与英文、数字、符号之间缺失必要空格
+- 句号、冒号等边界后缺空格或断句异常
+- `图 1`、`表 2`、`式（1）` 这类标签书写不一致
+- 全角/半角括号和编号混用
+- 中文标点与英文缩写混排时的表面样式不统一
 
 ## 原则
 
-- 把它们当作 surface cleanup，而不是 semantic rewriting
-- 只有在目标表面形式明确时，才应用 deterministic fix
-- 如果问题看得见，但正确修法不明确，则写入 `Unchanged Suspicious Items`
+- 把这些问题视为表层清理，而不是语义改写
+- 只有在目标形式明确时，才做确定性的修正
+- 如果问题可见，但正确修法并不明确，则写入 `未修改但可疑项`
 
 ## 安全示例
 
 - `state.Different` -> `state. Different`
 - `Fig.7` -> `Fig. 7`
-- `（1）` -> `(1)`
+- `图1` -> `图 1`
+- `（1）` -> `(1)` 或按全文统一规范处理
 
 ## 不要做的事
 
-- 不要借表面清理之名改写附近 technical content
-- 不要悄悄改变 citation formatting 或 bibliographic style
-- 当简单修 surrounding prose 就足够时，不要去动 inline equations 或 embedded objects
+- 不要借表层清理之名改写附近技术内容
+- 不要顺手改变引文格式或参考文献样式
+- 当简单修 surrounding prose 就足够时，不要去动公式、变量或嵌入对象

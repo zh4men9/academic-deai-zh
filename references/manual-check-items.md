@@ -1,73 +1,73 @@
-# Manual Check Items
+# 人工复核项
 
-只有当**已经改过的文本**仍存在实质解释风险时，才把它放进 `Manual Check Items`。
+只有当**已经改过的文本**仍存在实质解释风险时，才把它放进 `人工复核项`。
 
 ## 这个块负责什么
 
 用于：
 
-- 已经改写，但解释上仍可能影响判断的句子
-- 有风险的 claim recalibration
-- 有风险的 citation-bearing rewrites
-- 有风险的 methods 或 result wording changes
-- 有风险的 causal 或 scope changes
+- 已经改写，但改后仍可能影响作者意图判断的句子
+- 有风险的论断力度校准
+- 有风险的引文承载句重写
+- 有风险的方法段或结果段措辞调整
+- 有风险的因果关系或适用范围变化
 
 不要用于：
 
 - 因高风险而故意不改的文本
 - 没改但仍可疑的低风险残留
-- harmless 的低风险清理
+- 无解释风险的表层清理
 
-这些分别属于 `Skipped High-Risk Items` 或 `Unchanged Suspicious Items`。
+这些分别属于 `跳过的高风险项` 或 `未修改但可疑项`。
 
 ## 何时生成
 
-若 edit 满足以下任一条件，就生成 checklist item：
+若修改满足以下任一条件，就生成复核项：
 
-- 改变了会影响解释的 claim strength
-- 改变了 exact quantitative result 周围的措辞
-- 重写了 citation-bearing 或 attribution-bearing sentence
-- 重写了 methods、procedure 或 assumptions sentence
-- 重写了 causal explanation
-- 缩窄或扩大了 generality scope
-- 把 definition-like sentence 改成了更描述性的句子
-- 为了兼顾 precision 和 fluency 做了明显 tradeoff
+- 论断力度发生变化，可能影响读者理解
+- 精确结果周围的措辞发生变化
+- 重写了引文承载句或归因句
+- 重写了方法、步骤、假设或定义句
+- 重写了因果解释
+- 缩小或扩大了适用范围
+- 把定义式句子改成了更描述性的句子
+- 为了兼顾准确性与流畅性做了明显 tradeoff
 
-对于 deterministic surface cleanup 或无解释风险的轻微模板清理，不要生成 checklist item。
+对于确定性的表层清理，或没有解释风险的轻微模板化清理，不要生成复核项。
 
 ## 必填字段
 
-每个 checklist item 必须包含：
+每个复核项必须包含：
 
-- `Location`
-- `Original fragment`
-- `Revised fragment`
-- `Risk type`
-- `Why it needs review`
-- `Suggested reviewer question`
+- `位置`
+- `原文片段`
+- `修改后片段`
+- `风险类型`
+- `需要复核的原因`
+- `建议复核问题`
 
 ## 质量标准
 
-好的 checklist 应当：
+好的复核项应当：
 
-- specific
-- short
+- 具体
+- 简短
 - 一条只对应一个真实 changed risk
-- 让人一眼就能 review
+- 让人能快速判断是否接受
 
-坏的 checklist 通常会：
+差的复核项通常会：
 
-- generic
-- repetitive
-- 讨论 unchanged text
-- 讨论 skipped text
-- 长到相当于重新做一遍全文人工编辑
+- 过于泛泛
+- 重复讨论同一问题
+- 讨论未修改文本
+- 讨论故意跳过的高风险文本
+- 长到等于重新人工审一遍全文
 
 ## 示例
 
-- `Location`: sentence 2
-- `Original fragment`: "clearly demonstrating remarkable superiority and strong generalizability across all settings"
-- `Revised fragment`: "in the evaluated setting"
-- `Risk type`: result-scope narrowing
-- `Why it needs review`: 改写改变了结论听起来有多宽
-- `Suggested reviewer question`: Does the revised scope still match what the experiment was intended to claim?
+- `位置`：结果段第 2 句
+- `原文片段`：`显著优于所有基线方法，并具有较强的泛化能力。`
+- `修改后片段`：`在当前实验设置下优于所比较的基线方法。`
+- `风险类型`：结果范围收窄
+- `需要复核的原因`：改写改变了结论听起来有多宽
+- `建议复核问题`：修改后的范围是否仍然符合作者原本想表达的实验结论？

@@ -1,11 +1,17 @@
 # Academic De-AI 中文版
 
-这是 `academic-deai` 的中文镜像版本，用于帮助中文用户理解和维护这个开源 skill。  
-它的目标不是处理中文学术写作，而是以中文说明的方式，驱动对**英文**学术文本进行安全、克制、可追踪的去 AI 味处理。
+一个开源的 Codex skill，用于在**不改变技术含义、引文关系、证据力度和学术语气**的前提下，降低中文学术写作中的 AI 痕迹。
 
-## 对应仓库
+这个 skill 面向中文论文和中文学术沟通文本，而不是普通“润色得更像真人聊天”的 humanizer。它的目标是让中文学术 prose **更少模板味、更少空泛套话、更成比例、更具体**，同时保持正式、可追溯、可复核。
 
-- 英文主版本仓库：[zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
+## 对应英文母版
+
+- 英文能力母版仓库：[zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
+
+中文版不是镜像说明层，而是**中文论文场景的强同步双生版**：
+
+- 同步英文版的 workflow、guards、edit levels 和 reporting structure
+- 本地化中文论文的触发语、诊断信号、章节指导、示例和 benchmark
 
 ## 安装方式
 
@@ -41,34 +47,34 @@ git -C ~/.claude/skills/academic-deai-zh pull
 
 可以直接对 agent 说：
 
-- `用 balanced 模式帮我把这个英文 abstract 去 AI 味，但不要改 technical meaning。`
-- `帮我把这段 introduction 改得少一点 LLM 味，但保留 citations 和 evidence。`
+- `帮我把这段中文摘要去 AI 味，但不要改技术含义。`
+- `这段中文引言有点像 AI 写的，按平衡档位帮我润色。`
+- `这段相关工作请保留归因关系，只做压缩和去模板化。`
 
-## 定位
+## 这个 skill 做什么
 
-这个 skill 适用于以下英文文本：
+- 处理中文论文摘要、引言、相关工作、方法、实验结果、讨论和结论
+- 处理中文投稿附信和中文回复信
+- 默认使用**平衡**论断档位，而不是一味收窄
+- 使用**章节感知**与**风险感知**的编辑规则
+- 用 `仅微调` 约束高风险段落
+- 用透明报告区分已改风险、跳过风险和未改残留
 
-- journal / conference manuscript
-- abstract
-- introduction
-- related work
-- discussion / conclusion
-- cover letter
-- rebuttal / response letter
+最适合的请求包括：
 
-它要解决的是：
+- “帮我把这段中文摘要去 AI 味。”
+- “让这段引言少一点模板感，但不要改问题设定。”
+- “把这段结论改得更自然，但不要过度收窄论断。”
+- “检查这段方法是否还有 AI 味，只允许做微调。”
 
-- 模板化 academic prose
-- 空泛褒义与过度 significance claim
-- 机械转折和自我宣告式 scaffolding
-- 低风险表面残留，如缺空格、图号空格、全角编号
+## 这个 skill 不做什么
 
-它**不**追求：
-
-- 让文本更像聊天
-- 增加 personality / warmth / humor
-- 为了更顺口而牺牲技术精度
-- 悄悄改事实、引文关系、结果力度
+- 它不是博客或营销文案 humanizer
+- 它不是参考文献修复工具
+- 它不是事实修正器
+- 它不是期刊格式化工具
+- 它不是以牺牲精确性为代价的流畅度最大化器
+- 它不能替代真正高风险学术修改的人审
 
 ## 目录结构
 
@@ -102,107 +108,126 @@ academic-deai-zh/
     └── workflow.md
 ```
 
-## 默认 v3 行为
+## 当前默认行为（v3）
 
 当前默认策略：
 
-- `Claim Mode = balanced`
-- 允许的 edit level 为 `No-op` / `Micro-edit only` / `Full safe rewrite`
+- `论断档位 = 平衡`
+- `编辑级别` 从 `不改` / `仅微调` / `安全重写` 中选择
 - 默认启用透明报告
-- 非平凡改写前必须做 `Detail Preservation Guard`
-- 改写后必须做 `Residual Scan`
+- 非平凡改写前必须做 `细节保留检查`
+- 改写后必须做 `残留扫描`
 
-对于整篇论文，默认必须分章节处理，而不是全文一次性重写。
+对于整篇论文，默认必须按章节处理，而不是全文一次性重写。
 
 ## 标准输出块
 
-为保持英文版与中文版一致，输出块名称保留英文原名：
+本 skill 默认使用以下中文输出块：
 
-- `Diagnosis`
-- `Edit Level`
-- `Claim Mode`
-- `Priority Fixes`
-- `Revised Text`
-- `Risk Check`
-- `Manual Check Items`
-- `Skipped High-Risk Items`
-- `Unchanged Suspicious Items`
-- `Verdict`
+- `诊断`
+- `编辑级别`
+- `论断档位`
+- `优先修复项`
+- `修订文本`
+- `风险检查`
+- `人工复核项`
+- `跳过的高风险项`
+- `未修改但可疑项`
+- `结论`
 
-这三个风险块必须分开：
+三类残余风险必须分开：
 
-- `Manual Check Items`：已经改了，但改动仍有解释风险
-- `Skipped High-Risk Items`：因为风险过高而故意不改
-- `Unchanged Suspicious Items`：没改，但仍残留低风险可疑表达或表面问题
+- `人工复核项`：已经改了，但改后仍需人工判断
+- `跳过的高风险项`：因为安全边界而故意不改
+- `未修改但可疑项`：没改，但仍残留低风险套话或表层问题
 
-## Claim Mode
+## 论断档位
 
-该 skill 保留与英文版完全一致的三档 claim mode：
+本 skill 支持三档论断校准：
 
-- `closer to source`
-- `balanced`
-- `conservative`
+- `贴近原文`
+  - 当用户明确要求更忠实于原文强调力度时使用
+- `平衡`
+  - 默认档；在去 AI 味的同时尽量保留作者原始重点
+- `保守`
+  - 仅当用户明确要求更收敛、更谨慎时使用
 
-其中：
+## 安全模型
 
-- `closer to source`：更贴近原文强调力度
-- `balanced`：默认档，既去 AI 味，也不过度收窄
-- `conservative`：仅在用户明确要求更保守时使用
+本 skill 围绕以下优先级设计：
+
+1. 保留技术含义
+2. 保留引文与证据关系
+3. 保留具体细节
+4. 让论断力度与证据匹配
+5. 只在前四项不受损时提升自然度
+
+高风险文本，如方法、精确结果、统计表述、符号密集段落，默认使用 `仅微调`。如果安全改进必须改动技术骨架，本 skill 会显式报告，而不是假装已经安全重写。
 
 ## 版本迭代
 
 ### v1
 
-v1 建立了最初的 academic-safe 去 AI 味框架：
+v1 建立了最初的中文学术安全去 AI 味框架：
 
 - diagnosis-first
 - conservative rewrite
 - section-aware editing
 - 明确禁止 casual humanization
-- 默认保护 technical meaning、citation intent 和 scholarly tone
+- 默认保护技术含义、引文关系和学术语气
 
-这一版证明了 skill 在低风险 prose 上可用，但高风险场景还比较依赖人工判断。
+这一版证明了低风险中文 prose 可以安全改善，但高风险场景仍较依赖人工判断。
 
 ### v2
 
-v2 加入了“受控自动化 + 独立风险清单”：
+v2 引入了“受控自动化 + 独立风险清单”：
 
-- 引入 `No-op` / `Micro-edit only` / `Full safe rewrite`
-- 引入 `Manual Check Items`
-- 加强 related work、citation-sensitive prose、高风险 technical text 的约束
-- 使整篇论文处理更容易落地
+- 引入 `不改` / `仅微调` / `安全重写`
+- 引入 `人工复核项`
+- 强化相关工作、引文敏感 prose 和高风险技术段的约束
+- 改善整篇论文的处理纪律
 
-这一版的主要进步是降低了人工重读全文的负担，但报告仍可能偏乐观。
+这一版降低了人工通读全文的负担，但报告仍可能偏乐观。
 
 ### v3
 
-v3 把此前靠人工 QA 收敛出来的经验正式写成能力：
+v3 正式把之前依赖人工 QA 的经验固化成能力，并把仓库重定义为**中文论文场景的双生版**：
 
-- `balanced` 成为默认 claim mode
-- 引入 `Detail Preservation Guard`
-- 引入 `Residual Scan`
+- `平衡` 成为默认论断档位
+- 引入 `细节保留检查`
+- 引入 `残留扫描`
 - 引入透明报告三分法
-- 引入 `Surface Hygiene`
-- 强化 related work 的 citation-sensitive compression
-- 强化高风险段落的 symbol-safe micro-edit
-
-这一版是面向开源整理后的稳定结构版本。
+- 引入 `表层卫生`
+- 强化相关工作的归因骨架保护
+- 强化高风险段落的符号安全微调
+- 不再把中文仓库定位为“帮助处理英文论文”的镜像说明层
 
 ## 维护策略
 
-- **英文版是主版本**
-- 中文版以翻译同步为主，尽量不独立发散
-- 英文版变更时，建议按以下顺序同步：
-  1. 更新英文 `SKILL.md`
-  2. 更新英文 `references/`
-  3. 更新英文 `README.md`
-  4. 翻译并同步中文版
-  5. 重新验证两版 skill
+- **英文版是能力架构母版**
+- **中文版是中文论文场景的强同步双生版**
+- 同步的是：
+  - workflow
+  - guards
+  - edit levels
+  - transparent reporting structure
+  - benchmark categories
+- 本地化的是：
+  - 中文论文的套话信号
+  - 中文章节表达
+  - 中文输出块
+  - 中文示例与 benchmark
+
+英文版更新后，建议按以下顺序同步中文版：
+
+1. 更新英文 `SKILL.md`
+2. 更新英文 `references/`
+3. 判断哪些规则属于结构同步，哪些需要中文语料本地化
+4. 更新中文版 `SKILL.md` 和 `references/`
+5. 更新中文版 `README.md`
+6. 更新 `examples/` 与 `benchmark-demo/`
+7. 重新运行校验
 
 ## 对应英文版
 
-英文主版本单独维护于：
-
 - [zh4men9/academic-deai](https://github.com/zh4men9/academic-deai)
-
-如果后续要继续维护，优先改英文版，再同步中文版。

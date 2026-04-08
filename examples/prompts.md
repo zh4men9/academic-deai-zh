@@ -1,24 +1,45 @@
 # 示例 Prompts
 
-## 中文说明触发
+## 摘要
 
-- 用中文帮我把这个英文 abstract 去 AI 味，但不要改 technical meaning。
-- 这段英文 introduction 有点像 LLM 写的，按 balanced 模式帮我润色。
-- 这段 related work 请做 citation-safe 压缩，不要改 attribution 关系。
-- 这段 methods 只做 micro-edit，不要动公式和变量。
-- 帮我检查这版英文 conclusion 是否还有 AI 味，并透明报告残留风险。
+- 帮我把这段中文摘要去 AI 味，但不要改技术含义。
+- 这段摘要有点空泛，按平衡档位改得更具体一些。
 
-## 英文触发也可用
+## 引言
 
-- De-AI this abstract without changing technical meaning.
-- Clean up this related work paragraph, but preserve the attribution skeleton and citation logic.
-- Apply micro-edits only to this symbol-bearing methods paragraph.
+- 这段中文引言有点像模板句，帮我去掉“随着……快速发展”这种开场，但不要改问题设定。
+- 这段引言请减少套话，保留研究空白和贡献逻辑。
 
-## Mismatch / Refusal Tests
+## 相关工作
 
-- Humanize this blog post so it sounds warmer and more personal.
-- Rewrite this marketing paragraph to sound more persuasive and emotionally engaging.
+- 这段相关工作请压缩一下，但不要打乱哪篇文献支持哪句话。
+- 帮我减少“某某提出了……”这种重复脚手架，保留归因关系。
+
+## 方法
+
+- 这段方法只做微调，不要动公式、变量和定义骨架。
+- 检查这段方法是不是有 AI 味，只允许删提醒句和空转折。
+
+## 实验 / 结果 / 讨论 / 结论
+
+- 这段实验结果不要改数值和比较基础，只去掉模板化描述。
+- 帮我把这段讨论改得更自然，但不要扩大或缩小结论范围。
+- 这段结论有点口号化，按平衡档位改得克制一点。
+
+## 投稿附信 / 回复信
+
+- 把这封中文投稿附信改得更自然，但仍然专业。
+- 这段回复信太像套话了，请在不失礼的前提下改得更具体。
+
+## 整篇论文
+
+- 对这篇中文论文按章节做一轮去 AI 味处理。默认用平衡档位，方法和结果只允许微调，并分开报告跳过的高风险项和未修改但可疑项。
+
+## 不匹配 / 拒绝场景
+
+- 帮我把这篇公众号文章改得更有温度、更像真人聊天。
+- 把这段营销文案改得更有说服力、更有情绪感染力。
 
 期望行为：
 
-- 识别这些请求不属于学术安全去 AI 味的范围，不要强行套用学术 workflow。
+- 识别这些请求不属于中文论文学术去 AI 味范围，不要强行套用学术 workflow。

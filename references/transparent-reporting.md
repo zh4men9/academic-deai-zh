@@ -1,51 +1,50 @@
-# Transparent Reporting
+# 透明报告
 
-默认启用 transparent reporting。不要因为给出了一版“干净”的 rewrite，就把 residual risk 隐藏起来。
+默认启用透明报告。不要因为给出了一版“更干净”的修改，就把残余风险隐藏起来。
 
 ## 三类报告对象
 
-### Manual Check Items
+### 人工复核项
 
-用于：已经改过，但改后仍存在实质风险的文本。
+用于：已经改过，但改后仍存在实质解释风险的文本。
 
-### Skipped High-Risk Items
+### 跳过的高风险项
 
 用于：因为安全改写会触碰以下边界而故意保持不改的文本：
 
-- 改动 inline math 或 symbol-bearing spans
-- 重构 technical skeletons
-- 削弱 precision
-- 改变 attribution 或 evidence linkage
+- 会改动公式、变量或符号承载片段
+- 会重构技术骨架
+- 会削弱精确性
+- 会改变归因关系或证据锚点
 
-### Unchanged Suspicious Items
+### 未修改但可疑项
 
 用于：没有改，但仍残留以下问题的文本：
 
-- low-risk AI-like residue
-- broken sentence boundaries
-- missing spaces
-- figure / table label spacing residue
-- numbering-style mismatch
+- 低风险 AI 式套话残留
+- 断句或缺空格
+- 图表标签空格不一致
+- 全角编号或其他样式残留
 
 ## 标准输出块
 
 必须使用以下块名：
 
-- `Diagnosis`
-- `Edit Level`
-- `Claim Mode`
-- `Priority Fixes`
-- `Revised Text`
-- `Risk Check`
-- `Manual Check Items`
-- `Skipped High-Risk Items`
-- `Unchanged Suspicious Items`
-- `Verdict`
+- `诊断`
+- `编辑级别`
+- `论断档位`
+- `优先修复项`
+- `修订文本`
+- `风险检查`
+- `人工复核项`
+- `跳过的高风险项`
+- `未修改但可疑项`
+- `结论`
 
 ## 质量规则
 
-- 三个 residual-risk buckets 必须分开
-- 不要把 unchanged residue 报成 changed risky edit
-- 不要把 skipped text 报成 revised text
-- 若某一类为空，简短说明为空即可，不要静默省略
-- 宁可给出一个简短但诚实的报告，也不要给一个过度干净、掩盖不确定性的报告
+- 三个残余风险桶必须分开
+- 不要把未修改残留写成已改高风险项
+- 不要把故意跳过的高风险项伪装成修订文本
+- 如果某一类为空，简短说明为空即可，不要静默省略
+- 宁可给出简短但诚实的报告，也不要给出过度干净、掩盖不确定性的报告

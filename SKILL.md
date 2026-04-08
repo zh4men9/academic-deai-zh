@@ -1,151 +1,153 @@
 ---
 name: academic-deai-zh
-description: 当用户希望在不改变 technical meaning、citation intent、evidential strength 和 scholarly tone 的前提下，降低英文学术写作中的 AI 痕迹时使用。适用于 de-AI abstract、让 introduction 少一点 LLM 味、在不改内容的情况下润色 manuscript 段落，或将 cover letter / response letter 改得更自然但仍然专业。默认使用 balanced claim calibration，限制高风险改动，并透明报告 changed risks、skipped high-risk items 和 unchanged suspicious residue。
+description: 当用户希望在不改变技术含义、引文关系、证据力度和学术语气的前提下，降低中文学术写作中的 AI 痕迹时使用。适用于中文论文摘要、引言、相关工作、方法、实验结果、讨论结论、投稿附信和回复信。默认使用“平衡”论断档位，限制高风险改动，并透明报告已改高风险项、跳过的高风险项和未修改但可疑的残留。
 metadata:
-  short-description: 面向英文论文的平衡型去AI味与透明复核技能
+  short-description: 中文论文学术去AI味与透明复核
 ---
 
-# Academic De-AI 中文版
+# 中文论文 Academic De-AI
 
-## Overview
+## 概述
 
-当你需要对**英文**学术写作做 academic-safe 的去 AI 味处理时使用本 skill。目标是减少模板化、空泛化、夸张化或过于平滑的 LLM 痕迹，同时保留 meaning、evidence、citations 和学科语域下应有的正式性。
+当你需要对中文学术写作进行 academic-safe 的去 AI 味处理时使用本 skill。目标是减少模板化、空泛化、夸张化或过于平滑的 AI 痕迹，同时保留技术含义、证据链、引文关系和学术语气。
 
-默认采用 diagnosis first、balanced claim calibration 和 transparent reporting。若文本已经足够自然，优先选择 minimal edits 或 no-op，而不是为了“更像真人”去硬改。若风险真实存在，则要么保持改动克制、要么写入 `Manual Check Items`、要么明确说明该处保持不改。
+默认采用先诊断、后改写、再复核的工作流，默认使用“平衡”论断档位，并启用透明报告。若文本已经足够自然，优先选择不改或仅微调，而不是为了“更像真人”去强行重写。
 
-## When to Use
+## 适用场景
 
-适用于以下场景：
+适用于以下中文学术文本：
 
-- abstract
-- introduction
-- related work
-- discussion 和 conclusion
-- journal / conference cover letter
-- rebuttal letter 和 reviewer response letter
-- 明确要求“减少 AI 味但不改变技术内容”的段落级学术润色
+- 中文论文摘要
+- 中文论文引言
+- 中文论文相关工作
+- 中文论文方法部分
+- 中文论文实验与结果
+- 中文论文讨论与结论
+- 中文投稿附信
+- 中文回复信或审稿意见回复
+- 明确要求“减少 AI 味但不改变实质内容”的段落级中文学术润色
 
 典型触发语：
 
-- “帮我把这个 abstract 去 AI 味。”
-- “让这个 introduction 少一点 LLM 腔。”
-- “不改 technical meaning，润色这段 manuscript prose。”
-- “把这封 response letter 改得更自然但仍然专业。”
+- “帮我把这段中文摘要去 AI 味。”
+- “这段引言有点像 AI 写的，帮我改得自然一点。”
+- “这段相关工作请保留归因关系，只做压缩和去模板化。”
+- “这段方法只做微调，不要动公式和变量。”
+- “帮我检查这版中文结论是否还有 AI 味，并透明报告残留风险。”
 
-## When Not to Use
+## 不适用场景
 
 不要把本 skill 作为以下任务的主流程：
 
-- equations、proofs、theorem statements、variable definitions
-- references 和 citation formatting
-- 原始 quantitative result statements，除非用户明确只要 style cleanup
-- tables、figure captions、labels，除非用户明确要求
-- 博客式 humanization
-- marketing / promotional tone transformation
-- creative writing
-- 追求 personality、warmth、humor 或 chatty naturalness 的请求
+- 公式、定理、变量定义、严格证明
+- 参考文献格式整理
+- 原始数值结果重写，除非用户明确只要风格清理
+- 表格、图题、图注、附录公式，除非用户明确要求
+- 博客、人设化表达、营销文案、宣传稿
+- 创意写作
+- 追求“更有温度/更有个性/更像聊天”的普通 humanization
 
-如果请求更接近普通 humanization 而不是 scholarly editing，应明确指出不匹配，而不是硬套本 workflow。
+如果请求更接近普通润色或营销改写，而不是中文论文学术去 AI 味，应明确指出不匹配，不要强套本 workflow。
 
-## Default Workflow
+## 默认工作流
 
-1. 识别 genre、section、risk level，以及文本是否 citation-sensitive 或 symbol-bearing。
-2. 先诊断 AI-like signals，再决定是否改写。
-3. 对任何非平凡 rewrite，先执行 `Detail Preservation Guard`。
-4. 明确选择一种 `Edit Level`：`No-op`、`Micro-edit only`、`Full safe rewrite`。
-5. 只有在确有必要时才输出 revised text，随后执行 `Residual Scan`。
-6. 最后用透明报告输出 changed risks、skipped high-risk items 和 unchanged suspicious residue。
+1. 识别文本类型、章节、风险级别，以及是否属于引文敏感或符号敏感文本。
+2. 先诊断 AI 痕迹，再决定是否改写。
+3. 对任何非平凡改写，先执行 `细节保留检查`。
+4. 明确选择一种编辑级别：`不改`、`仅微调`、`安全重写`。
+5. 只有在确有必要时才输出修订文本，随后执行 `残留扫描`。
+6. 最后用透明报告输出已改高风险项、跳过的高风险项和未修改但可疑项。
 
-如果处理整篇论文，必须 section by section，而不是全文一次性改写。默认顺序是 abstract、introduction、related work、discussion、conclusion；methods 和 results 只有在用户明确要求时再处理。
+如果处理整篇中文论文，必须按章节逐段处理，而不是一次性全文重写。默认顺序是摘要、引言、相关工作、讨论、结论；方法和实验结果只有在用户明确要求时才进入主改写流程。
 
-## Claim Calibration
+## 论断档位
 
-必须显式选择一个 claim mode：
+必须显式使用以下档位之一：
 
-- `closer to source`
-- `balanced`
-- `conservative`
+- `贴近原文`
+- `平衡`
+- `保守`
 
-默认使用 `balanced`。只有当用户明确要求更贴近原文强调力度时才使用 `closer to source`；只有当用户明确想更保守时才使用 `conservative`。
+默认使用 `平衡`。只有当用户明确要求尽量保留原文强调力度时，才使用 `贴近原文`；只有当用户明确希望更收敛、更谨慎时，才使用 `保守`。
 
-## Edit Levels
+## 编辑级别
 
-必须显式使用以下 edit level 之一：
+必须显式选择以下编辑级别之一：
 
-- `No-op`
-  - 当 prose 已经足够具体、克制、非模板化时使用
+- `不改`
+  - 当文本已经具体、克制、非模板化时使用
   - 可以直接建议不做实质改写
 
-- `Micro-edit only`
-  - 当最安全的做法只是删除空转折、重复 novelty framing、夸张副词、轻微 scaffolding 或表面残留时使用
-  - 这是 high-risk、citation-sensitive、symbol-bearing 文本的默认档
+- `仅微调`
+  - 当最安全的做法只是删除空转折、重复脚手架、夸张副词、轻微套话或表层残留时使用
+  - 这是高风险、引文敏感、符号敏感文本的默认档位
 
-- `Full safe rewrite`
-  - 仅用于 low-risk academic prose
-  - 可以重组句子，但 meaning、evidence、claim calibration 和具体细节必须保留
+- `安全重写`
+  - 仅用于低风险中文学术 prose
+  - 可以重组句子，但技术含义、证据链、论断档位和具体细节必须保留
 
-## Mode Selection
+## 模式选择
 
-必须显式使用以下 mode 之一：
+必须显式使用以下模式之一：
 
-- `Diagnostic mode`
+- `诊断模式`
   - 当用户先问“这段是不是像 AI 写的”或要求先看问题时使用
-  - 输出：`Diagnosis`、`Priority Fixes`，以及必要的透明报告块
+  - 输出：`诊断`、`优先修复项`，以及必要的透明报告块
 
-- `Conservative rewrite mode`
+- `保守改写模式`
   - 当用户明确要求改写时使用
-  - 输出：`Diagnosis`、`Edit Level`、`Claim Mode`、`Revised Text`、`Risk Check`，以及必要的透明报告块
+  - 输出：`诊断`、`编辑级别`、`论断档位`、`修订文本`、`风险检查`，以及必要的透明报告块
 
-- `Final audit mode`
+- `终审模式`
   - 当用户给出改写后文本，或要求做 final check 时使用
-  - 输出：`Verdict`、`Diagnosis`、`Risk Check`，以及必要的透明报告块
+  - 输出：`结论`、`诊断`、`风险检查`，以及必要的透明报告块
 
 默认路由：
 
-- “这段像 AI 写的吗？” -> `Diagnostic mode`
-- “把这段改得少一点 AI 味。” -> `Conservative rewrite mode`
-- “帮我检查现在这个版本是否安全。” -> `Final audit mode`
+- “这段像 AI 写的吗？” -> `诊断模式`
+- “把这段改得少一点 AI 味。” -> `保守改写模式`
+- “帮我检查现在这个版本是否安全。” -> `终审模式`
 
-## Output Blocks
+## 标准输出块
 
 统一使用以下块名：
 
-- `Diagnosis`
-- `Edit Level`
-- `Claim Mode`
-- `Priority Fixes`
-- `Revised Text`
-- `Risk Check`
-- `Manual Check Items`
-- `Skipped High-Risk Items`
-- `Unchanged Suspicious Items`
-- `Verdict`
+- `诊断`
+- `编辑级别`
+- `论断档位`
+- `优先修复项`
+- `修订文本`
+- `风险检查`
+- `人工复核项`
+- `跳过的高风险项`
+- `未修改但可疑项`
+- `结论`
 
-`Manual Check Items`、`Skipped High-Risk Items` 和 `Unchanged Suspicious Items` 必须保持独立，不要埋在普通说明文字中。
+`人工复核项`、`跳过的高风险项` 和 `未修改但可疑项` 必须保持独立，不要埋在普通说明文字中。
 
-## Risk Rules
+## 风险规则
 
-- methods、experimental setup、exact result interpretation、theorem-like language、symbol-bearing paragraphs 这类高风险文本，默认先诊断，且默认 `Micro-edit only`
-- citation-heavy related work、multi-citation comparisons 和 attribution-bearing contrast sentences 即使不属于高风险，也属于 citation-sensitive
-- 对 named algorithms、datasets、environments、enumerations、scoped qualifiers、comparison bases 的压缩，必须先过 `Detail Preservation Guard`
-- 改写后必须执行 `Residual Scan`，把 unchanged low-risk residue 和 deterministic surface hygiene issues 显式报出来
-- 绝不增强 claims、捏造 evidence、改变 citation relationships
-- 绝不用 fluency 交换 precision
+- 方法、实验设置、精确结果解释、统计措辞、符号密集段落默认先诊断，且默认 `仅微调`
+- 相关工作中的多文献比较句、归因对比句、引文密集综述句属于引文敏感文本，即使不属于高风险技术段落也应谨慎处理
+- 对算法名、数据集名、环境名、枚举列表、限定条件、比较基准的压缩，必须先通过 `细节保留检查`
+- 改写后必须执行 `残留扫描`，把低风险可疑残留和表层问题显式报出来
+- 绝不增强论断、捏造证据、改变引文关系
+- 绝不用流畅性交换精确性
 - 如果文本已经足够自然，应建议不再修改
-- 如果某个高风险改进必须重构 technical skeleton，保持不改，并写入 `Skipped High-Risk Items`
+- 如果某个高风险改进必须重构技术骨架，则保持不改，并写入 `跳过的高风险项`
 
-## Reference Routing
+## 引用导航
 
 只读取需要的文件：
 
 - `references/core-rules.md`：不可违背的安全约束
-- `references/workflow.md`：triage、guards 和 full-document 流程
-- `references/section-guidance.md`：按章节的编辑策略
-- `references/diagnostic-checklist.md`：识别 AI-like signals 与 residual surface issues
-- `references/rewrite-patterns.md`：安全改写模式
-- `references/claim-calibration.md`：`closer to source` / `balanced` / `conservative`
-- `references/manual-check-items.md`：checklist 触发条件和字段结构
-- `references/transparent-reporting.md`：changed / skipped / unchanged 的报告规则
-- `references/surface-hygiene.md`：确定性的非语义表面清理
+- `references/workflow.md`：分流、保护机制与整篇处理流程
+- `references/section-guidance.md`：中文论文按章节的编辑策略
+- `references/diagnostic-checklist.md`：识别中文学术写作中的 AI 痕迹与残留问题
+- `references/rewrite-patterns.md`：中文安全改写模式
+- `references/claim-calibration.md`：`贴近原文` / `平衡` / `保守`
+- `references/manual-check-items.md`：人工复核项的触发条件与字段结构
+- `references/transparent-reporting.md`：已改 / 跳过 / 未改可疑的透明报告规则
+- `references/surface-hygiene.md`：中文论文常见的确定性表层清理
 - `references/non-goals.md`：决定哪些任务必须拒绝或避免
-- `references/validation-rubric.md`：final audit 和验收标准
+- `references/validation-rubric.md`：终审与验收标准

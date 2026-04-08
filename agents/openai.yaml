@@ -1,4 +1,4 @@
 interface:
-  display_name: "Academic De-AI 中文版"
-  short_description: "中文镜像：学术英文写作安全去AI味与透明复核工作流技能"
-  default_prompt: "使用 $academic-deai-zh 对英文学术文本执行安全、克制、透明的去 AI 味处理，优先保留原意、证据、细节和 scholarly tone；默认使用 balanced claim calibration，对高风险文本优先采用 micro-edit only，并分别报告已改高风险项、跳过的高风险项和未改但可疑的残留。"
+  display_name: "Academic De-AI 中文论文版"
+  short_description: "面向中文论文场景的学术安全去AI味与透明复核工作流技能"
+  default_prompt: "使用 $academic-deai-zh 对中文论文或中文学术文本执行安全、克制、透明的去 AI 味处理；默认使用平衡论断档位，对高风险文本优先采用仅微调，并分别报告人工复核项、跳过的高风险项和未修改但可疑项。"

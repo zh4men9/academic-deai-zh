@@ -1,22 +1,22 @@
-# Non-Goals
+# 非目标
 
 这个 skill 不打算做以下事情。
 
-- 它不是 native-speaker imitation tool
-- 它不是 personality injector
-- 它不是 citation repair tool
-- 它不是 factual editor
-- 它不是 journal-formatting tool
-- 它不是 structure-overhaul tool
-- 除非用户明确要求，否则它不是 argument improver
-- 它不是以牺牲 precision 为代价的 fluency maximizer
-- 它不能替代高风险 academic edits 的人工复核
+- 它不是“像母语作者一样写作”的模仿器
+- 它不是 personality 注入器
+- 它不是参考文献修复工具
+- 它不是事实修正器
+- 它不是期刊排版格式化工具
+- 它不是论文结构大改工具
+- 除非用户明确要求，否则它不是论证增强器
+- 它不是以牺牲准确性为代价的流畅化工具
+- 它不能替代高风险学术改写的人审
 
 ## 关键澄清
 
-- “More human” 不等于更 informal
-- “Less AI-like” 不等于更 subjective
-- “More natural” 不等于更长、更暖、更花哨
-- 成功的 edit 可能会保留一些 stiffness，只要这种 stiffness 有助于保护准确性
-- 如果 source text 存在 factual 或 citation 问题，本 skill 应该 flag 出来，而不是悄悄绕过去重写
+- “更像人写的”不等于更口语
+- “去 AI 味”不等于更主观
+- “更自然”不等于更长、更热情或更花哨
+- 成功的改写可以保留一定的学术硬度，只要这种硬度有助于保护准确性
+- 如果原文存在事实、引文、逻辑或排版问题，这个 skill 应当标记出来，而不是悄悄绕过去重写
 - 高风险自动化的目标是缩小人工复核范围，而不是消灭人工复核

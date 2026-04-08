@@ -1,164 +1,162 @@
-# Workflow
+# 工作流
 
-## 1. Triage
+## 1. 分流识别
 
-改写前必须识别以下五项：
+改写前先识别以下五项：
 
-- genre：manuscript、cover letter、rebuttal 或 review response
-- section：abstract、introduction、related work、methods、results、discussion、conclusion 或其他
-- risk level：low、medium 或 high
-- sensitivity：ordinary、citation-sensitive 或 symbol-bearing
-- claim mode：`closer to source`、`balanced` 或 `conservative`
+- 文本类型：论文正文、投稿附信、回复信或其他
+- 章节：摘要、引言、相关工作、方法、实验结果、讨论、结论等
+- 风险级别：低、中、高
+- 敏感类型：普通、引文敏感、符号敏感
+- 论断档位：`贴近原文`、`平衡` 或 `保守`
 
-默认 claim mode 为 `balanced`。
+默认论断档位为 `平衡`。
 
-## 2. Diagnostic Pass
+## 2. 诊断阶段
 
-改写前先使用 diagnostic checklist。
+改写前先使用诊断清单，重点查看：
 
-需要看：
+- AI 式模板化表达
+- 引文敏感的比较结构
+- 不可丢失的具体细节
+- 确定性的表层残留，例如断句、缺空格、图表标签空格、全角编号
 
-- AI-like prose signals
-- citation-sensitive comparison structure
-- 不可丢失的 concrete detail
-- deterministic surface residue，例如断句、缺空格、图号空格、全角编号
+## 3. 风险分级
 
-## 3. Risk Classification
+默认按以下方式分级：
 
-默认按以下方式分类：
+### 低风险文本
 
-### Low-risk text
+- 摘要措辞
+- 引言铺垫
+- 结论拔高
+- 投稿附信僵硬套话
+- 不含引文敏感比较的一般背景段
 
-- abstract wording
-- introduction framing
-- conclusion inflation
-- cover-letter stiffness
-- 不含 citation-sensitive comparison 的 general background prose
+### 中风险文本
 
-### Medium-risk text
+- 相关工作综合段
+- 多引文综合段
+- 带归因的对比句
+- 讨论中的解释性判断
+- 回复信中的回应语气
 
-- related work synthesis
-- citation-heavy synthesis
-- attribution-bearing contrast sentences
-- discussion claims
-- reviewer-response tone
+### 高风险文本
 
-### High-risk text
+- 方法
+- 实验设置
+- 精确结果解释
+- 定义式语言
+- 统计表述
+- 含变量、符号或公式承载的技术段落
 
-- methods
-- experimental setup
-- exact numerical result interpretation
-- theorem-like language
-- statistical wording
-- symbol-bearing technical paragraphs
+## 4. 细节保留检查
 
-## 4. Detail Preservation Guard
+在接受任何非平凡改写前，检查修改是否删除或削弱了：
 
-在接受任何非平凡 rewrite 前，检查 revision 是否删除或削弱了：
+- 算法名
+- 数据集或环境名
+- 枚举项
+- 限定语
+- 比较基础
+- 与证据绑定的条件
 
-- named algorithms
-- datasets 或 environments
-- enumerations
-- scoped qualifiers
-- comparison bases
-- evidence-linked conditions
+如果具体细节会丢失，执行以下之一：
 
-如果 concrete detail 丢失，执行以下之一：
-
-- 退回 `Micro-edit only`
+- 降级为 `Micro-edit only`
 - 保留原文
-- 在 `Risk Check` 中显式说明该问题
+- 在 `风险检查` 中明确说明 detail-loss 风险
 
 不要把具体列表直接压没。更安全的做法通常是压缩列表周围，而不是压缩列表本身。
 
-## 5. Edit Decision
+## 5. 编辑级别决策
 
-必须显式选择一个 edit level。
+必须显式选择一个编辑级别。
 
 ### No-op
 
-- 当文本已经 specific、proportionate、non-templated 时使用
-- 优先于不必要的 smoothing
+- 当文本已经具体、克制、非模板化时使用
+- 优先于不必要的顺滑化改写
 
 ### Micro-edit only
 
-- high-risk 文本默认使用
-- citation-sensitive 文本默认使用
-- symbol-bearing 文本默认使用
-- 仅允许改动：空转折、重复 novelty framing、夸张副词、reminder phrases、不必要重复、过宽 scope language、deterministic surface cleanup
+- 高风险文本默认使用
+- 引文敏感文本默认使用
+- 符号敏感文本默认使用
+- 仅允许改动：空转折、重复 novelty framing、夸张副词、提醒句、无意义重复、过宽范围语言、确定性的表层清理
 - 不要实质性重构句子
-- 不要改动 inline math、variable-bearing spans、embedded objects 或 definition skeletons
+- 不要改动公式、变量片段、嵌入对象或定义骨架
 
 ### Full safe rewrite
 
-- 仅用于 low-risk 文本
-- medium-risk 文本只有在 attribution、evidence linkage 和 claim calibration 仍然清楚时才可使用
+- 仅用于低风险文本
+- 中风险文本只有在归因、证据关系和论断校准仍然清楚时才可使用
 
-## 6. Manual Check Items
+## 6. 人工复核项
 
-只有 changed sentence 仍然存在实质风险时，才生成单独的 `Manual Check Items` 块。
+只有已改句子仍存在实质风险时，才生成单独的 `人工复核项` 块。
 
 常见触发条件：
 
-- claim strength 的变化影响了解释
-- exact quantitative result 周围的 wording 改了
-- attribution-bearing 或 citation-bearing sentence 被重写
-- methods、procedure 或 assumptions sentence 被重写
-- causal explanation 被重写
-- generality scope 被缩窄或扩大
-- definition-like sentence 被改成了更描述性的句子
-- edit 需要在 precision 和 fluency 之间做 tradeoff
+- 论断力度变化影响了解释
+- 精确结果周围的措辞变了
+- 引文承载句或归因句被重写
+- 方法句、步骤句或假设句被重写
+- 因果解释被重写
+- 适用范围被缩窄或扩大
+- 定义式句子被改成了更描述性的句子
+- 改写需要在准确性和流畅性之间做 tradeoff
 
-不要用 `Manual Check Items` 去装 skipped high-risk candidates 或 unchanged suspicious residue。
+不要用 `人工复核项` 去装故意跳过的高风险文本或未改残留。
 
-## 7. Transparent Reporting
+## 7. 透明报告
 
-改写后，必须把 residual uncertainty 分成三类：
+改写后，必须把残余不确定性分成三类：
 
-- `Manual Check Items`：已经改了，但仍需 review 的 changed text
-- `Skipped High-Risk Items`：因为安全改写会越界，所以故意不改的文本
-- `Unchanged Suspicious Items`：改写后仍存在的 low-risk 或 surface-level residue
+- `人工复核项`：已经改了，但仍需 review 的 changed text
+- `跳过的高风险项`：因为安全改写会越界，所以故意不改的文本
+- `未修改但可疑项`：改写后仍存在的低风险或表层残留
 
-不要把所有不确定性都压进 `Manual Check Items`。
+不要把所有不确定性都压进 `人工复核项`。
 
-## 8. Residual Scan
+## 8. 残留扫描
 
-在任何 rewrite pass 之后，都要扫描 unchanged text 中是否还存在：
+在任何改写轮次之后，都要扫描未修改文本中是否还存在：
 
-- residual low-risk AI-like prose
-- broken sentence boundaries
-- missing sentence 或 label spacing
-- figure/table label formatting residue
-- full-width numbering 或其他明显的 surface-style mismatch
+- 低风险 AI 式套话残留
+- 断句异常
+- 句间或标签空格缺失
+- 图表标签格式残留
+- 全角编号或其他明显样式不一致
 
-把这些写入 `Unchanged Suspicious Items`。
+把这些写入 `未修改但可疑项`。
 
-## 9. Post-Edit Audit
+## 9. 改后复核
 
-任何 rewrite 之后，都要检查：
+任何改写之后，都要检查：
 
-- meaning preservation
-- detail preservation
-- claim calibration consistency
-- citation anchoring
-- tone consistency
-- 是否引入了比原文更 generic 的 prose
-- changed / skipped / unchanged reporting 是否真实透明，而不是过度乐观
+- 技术含义是否保留
+- 具体细节是否保留
+- 论断档位是否一致
+- 引文与证据锚点是否保留
+- 语气是否仍然正式
+- 是否引入了比原文更空泛的 prose
+- `人工复核项 / 跳过的高风险项 / 未修改但可疑项` 是否真实透明
 
-## 10. Whole-Document Rule
+## 10. 整篇论文规则
 
-绝不要把整篇 manuscript 当成一段文本一次性重写。必须 section by section 处理。
+不要把整篇论文当成一个整体一次性重写。必须按章节处理。
 
 推荐顺序：
 
-1. abstract
-2. introduction
-3. related work
-4. discussion
-5. conclusion
-6. methods 或 results，仅在用户明确要求时处理
-7. 最后执行 residual scan 和 transparent reporting
+1. 摘要
+2. 引言
+3. 相关工作
+4. 讨论
+5. 结论
+6. 方法或实验结果，仅在用户明确要求时处理
+7. 最后统一做残留扫描和透明报告
 
-## 11. Escalation Rule
+## 11. 升级提示
 
-如果文本存在严重的 factual、citation、logic 或 formatting 问题，而这些问题不属于 stylistic editing，应单独 flag 出来，并把 de-AI edits 保持最小。
+如果文本存在严重的事实、引文、逻辑或排版问题，而这些问题不属于风格级改写，应单独标记出来，并把去 AI 味修改保持在最小范围。
